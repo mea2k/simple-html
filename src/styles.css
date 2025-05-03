@@ -1,0 +1,321 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.progress-container {
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #ecf0f1;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background-color: #2ecc71;
+  transition: width 1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress-bar::after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 0;
+  background-color: #2ecc71;
+  transition: width 1s ease-in-out;
+}
+
+.progress-text {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.goal-item {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.goal-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.goal-title {
+  font-weight: 500;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+}
+
+.goal-title::before {
+  content: '▼';
+  font-size: 0.8em;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Добавляем стили для меток */
+.goal-label {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  margin-left: 10px;
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+/* Цвета для разных типов меток */
+.label-important {
+  background-color: #ff5252;
+  color: white;
+}
+
+.label-urgent {
+  background-color: #ff9800;
+  color: white;
+}
+
+.label-personal {
+  background-color: #4caf50;
+  color: white;
+}
+
+.label-work {
+  background-color: #2196f3;
+  color: white;
+}
+
+
+.goal-item.collapsed .goal-title::before {
+  transform: rotate(-90deg);
+}
+
+.goal-progress {
+  font-size: 0.9em;
+  color: #7f8c8d;
+}
+
+.subtasks {
+  margin-top: 10px;
+  padding-left: 15px;
+  border-left: 3px solid #ddd;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  max-height: 500px;
+}
+
+.goal-item.collapsed .subtasks {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-left-color: transparent;
+}
+
+.subtask {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.subtask:last-child {
+  border-bottom: none;
+}
+
+.subtask-checkbox {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.subtask-label {
+  flex-grow: 1;
+}
+
+.subtask.completed .subtask-label {
+  text-decoration: line-through;
+  color: #7f8c8d;
+}
+
+.goal-progress-bar {
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.goal-progress-fill {
+  height: 100%;
+  width: 0;
+  background-color: #3498db;
+  transition: width 0.5s ease;
+}
+
+.goal-item.completed .goal-title {
+  color: #2ecc71;
+}
+
+/* Стили для поздравительного окна */
+.congrats-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.congrats-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.congrats-modal.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.congrats-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.congrats-modal.show .congrats-content {
+  transform: translateY(0);
+}
+
+.congrats-content h2 {
+  color: #2ecc71;
+  margin-bottom: 15px;
+}
+
+.congrats-content p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.close-congrats {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.close-congrats:hover {
+  background-color: #27ae60;
+}
+
+/* Стили для футера */
+.site-footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9em;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-footer a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.site-footer .app-name {
+  color: #82db34;
+  text-decoration: none;
+}
+
+.social-links {
+  margin-top: 15px;
+}
+
+.social-links a {
+  color: #ecf0f1;
+  margin: 0 10px;
+  font-size: 1.2em;
+}
+
+
+/* Добавляем отступ для основного контента */
+.container {
+  padding-bottom: 60px; /* Чтобы футер не перекрывал контент */
+}

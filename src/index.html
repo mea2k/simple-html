@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Трекер целей с подзадачами</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Мои цели</h1>
+    <div class="progress-container">
+      <div class="progress-bar" id="mainProgressBar"></div>
+      <span id="mainProgressText">0% выполнено</span>
+    </div>
+    <div class="goals-list" id="goalsList"></div>
+  </div>
+
+  <div class="congrats-modal hidden" id="congrats">
+    <div class="congrats-content">
+      <h2>Поздравляем! 🎉</h2>
+      <p>Вы выполнили все цели!</p>
+      <p>Получите диплом <b>DevOps-инженера</b>!</p>
+      <button class="close-congrats">Закрыть</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p><span class="app-name">Трекер целей</span> © 2025</p>
+      <p>Copyright by <a href="https://github.com/mea2k" target="_blank">DJ Eugene</a></p>
+      <p>Версия 1.0.0</p>
+    </div>
+    <div class="social-links">
+      <a href="https://github.com/mea2k/simple-html"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
