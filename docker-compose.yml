@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   simple-html:
+    image: cr.yandex/crpg9ie34hq65l49usj2/devops-html
     build: .
     ports:
       - "3000:80"

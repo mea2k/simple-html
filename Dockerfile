@@ -22,7 +22,7 @@ FROM nginx:alpine
 RUN rm -rf /etc/nginx/conf.d/*
 
 # Копируем нашу конфигурацию Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Запрещаем вывод версии Nginx в заголовках
 RUN echo "server_tokens off;" > /etc/nginx/conf.d/server_tokens.conf
