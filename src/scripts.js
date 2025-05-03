@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  fetch('data/netology.json')
+  fetch('data/data.json')
     .then(response => response.json())
     .then(goals => {
       const goalsList = document.getElementById('goalsList');

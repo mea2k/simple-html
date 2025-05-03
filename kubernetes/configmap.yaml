@@ -1,0 +1,322 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-app-config
+data:
+  data.json: |
+    [
+      {
+        "id": 1,
+        "title": "Виртуализация и контейнеризация",
+        "label": {
+          "type": "work",
+          "text": "SHVIRTD-7"
+        },
+        "requiredCompleted": 4,
+        "subtasks": [
+          {
+            "title": "Введение в виртуализацию. Типы и функции гипервизоров. Обзор рынка вендоров и областей применения",
+            "completed": true
+          },
+          {
+            "title": "Применение принципов IaaC в работе с виртуальными машинами",
+            "completed": true
+          },
+          {
+            "title": "Введение в Docker",
+            "completed": true
+          },
+          {
+            "title": "Оркестрация группой Docker контейнеров на примере Docker Compose",
+            "completed": true
+          },
+          {
+            "title": "Практическое применение Docker",
+            "completed": true
+          },
+          {
+            "title": "Оркестрация кластером Docker контейнеров на примере Docker Swarm",
+            "completed": false
+          }      
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Облачная инфраструктура. Terraform",
+        "label": {
+          "type": "work",
+          "text": "SHTER-7"
+        },
+        "requiredCompleted": 3,
+        "subtasks": [
+          {
+            "title": "Введение в Terraform",
+            "completed": true
+          },
+          {
+            "title": "Основы работы с Terraform",
+            "completed": true
+          },
+          {
+            "title": "Управляющие конструкции в коде Terraform",
+            "completed": true
+          },
+          {
+            "title": "Продвинутые методы работы с Terraform",
+            "completed": false
+          },
+          {
+            "title": "Использование Terraform в команде",
+            "completed": false
+          }     
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Система управления конфигурациями",
+        "label": {
+          "type": "work",
+          "text": "SHKONF-7"
+        },
+        "requiredCompleted": 3,
+        "subtasks": [
+          {
+            "title": "Введение в Ansible",
+            "completed": true
+          },
+          {
+            "title": "Работа с Playbook",
+            "completed": true
+          },
+          {
+            "title": "Использование Ansible",
+            "completed": true
+          },
+          {
+            "title": "Работа с roles",
+            "completed": true
+          },
+          {
+            "title": "Создание собственных модулей",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Непрерывная разработка и интеграция",
+        "label": {
+          "type": "work",
+          "text": "SHCICD-DEV-7"
+        },
+        "requiredCompleted": 5,
+        "subtasks": [
+          {
+            "title": "Жизненный цикл ПО",
+            "completed": true
+          },
+          {
+            "title": "DevOps и SRE",
+            "completed": true
+          },
+          {
+            "title": "Процессы CI/CD",
+            "completed": true
+          },
+          {
+            "title": "Jenkins",
+            "completed": true
+          },
+          {
+            "title": "Teamcity",
+            "completed": true
+          },
+          {
+            "title": "Gitlab",
+            "completed": false
+          }
+        ]
+      }, 
+      {
+        "id": 5,
+        "title": "Мониторинг и логи",
+        "label": {
+          "type": "work",
+          "text": "SHMON-DEV-7"
+        },
+        "requiredCompleted": 3,
+        "subtasks": [
+          {
+            "title": "Системы мониторинга",
+            "completed": true
+          },
+          {
+            "title": "Средство визуализации Grafana",
+            "completed": true
+          },
+          {
+            "title": "Система сбора логов Elastic Stack",
+            "completed": true
+          },
+          {
+            "title": "Платформа мониторинга Sentry",
+            "completed": false
+          },
+          {
+            "title": "Инцидент-менеджмент",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Микросервисы",
+        "label": {
+          "type": "work",
+          "text": "SHMICROS-7"
+        },
+        "requiredCompleted": 3,
+        "subtasks": [
+          {
+            "title": "Введение в микросервисы",
+            "completed": true
+          },
+          {
+            "title": "Микросервисы: принципы",
+            "completed": true
+          },
+          {
+            "title": "Микросервисы: подходы",
+            "completed": true
+          },
+          {
+            "title": "Микросервисы: масштабирование",
+            "completed": false
+          }
+        ]
+      }, 
+      {
+        "id": 7,
+        "title": "Kubernetes: основы, применение и администрирование",
+        "label": {
+          "type": "work",
+          "text": "SHKUBER-7"
+        },
+        "requiredCompleted": 10,
+        "subtasks": [
+          {
+            "title": "Kubernetes. Причины появления. Команда kubectl",
+            "completed": true
+          },
+          {
+            "title": "Базовые объекты K8S",
+            "completed": true
+          },
+          {
+            "title": "Запуск приложений в K8S",
+            "completed": true
+          },
+          {
+            "title": "Сетевое взаимодействие в Kubernetes. Часть 1",
+            "completed": true
+          },
+          {
+            "title": "Сетевое взаимодействие в Kubernetes. Часть 2",
+            "completed": true
+          },
+          {
+            "title": "Хранение в K8s. Часть 1",
+            "completed": true
+          },
+          {
+            "title": "Хранение в K8s. Часть 2",
+            "completed": true
+          },
+          {
+            "title": "Конфигурация приложений",
+            "completed": true
+          },
+          {
+            "title": "Управление доступом",
+            "completed": true
+          },
+          {
+            "title": "Helm",
+            "completed": true
+          },
+          {
+            "title": "Компоненты Kubernetes",
+            "completed": false
+          },
+          {
+            "title": "Установка Kubernetes с помощью kubeadm, kubespray",
+            "completed": false
+          },
+          {
+            "title": "Как работает сеть в K8S",
+            "completed": false
+          },
+          {
+            "title": "Обновление приложений",
+            "completed": false
+          },
+          {
+            "title": "Troubleshooting",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Организация проекта при помощи облачных провайдеров",
+        "label": {
+          "type": "work",
+          "text": "SHCLOPRO-7"
+        },
+        "requiredCompleted": 3,
+        "subtasks": [
+          {
+            "title": "Организация сети",
+            "completed": true
+          },
+          {
+            "title": "Вычислительные мощности. Балансировщики нагрузки",
+            "completed": true
+          },
+          {
+            "title": "Безопасность в облачных провайдерах",
+            "completed": true
+          },
+          {
+            "title": "Кластеры. Ресурсы под управлением облачным провайдером",
+            "completed": true
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Итоговый модуль профессии DevOps-инженер",
+        "label": {
+          "type": "important",
+          "text": "FSHDEVOPS-7"
+        },
+        "subtasks": [
+          {
+            "title": "Организация отказоустойчивого кластера",
+            "completed": false
+          },
+          {
+            "title": "Организация мониторинга кластера",
+            "completed": false
+          },
+          {
+            "title": "CI/CD-pipelines",
+            "completed": false
+          },
+          {
+            "title": "Тестовое приложение",
+            "completed": false
+          }
+        ]
+      }
+    ]
