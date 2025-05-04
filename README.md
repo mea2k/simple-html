@@ -20,18 +20,18 @@ __Структура json-файла:__
     "title": string,
     "label": {
       "type": {"important" | "urgent" | "personal" | "work"},
-   		"text": string
-  	},
-		"requiredCompleted": number,
+     "text": string
+   },
+  "requiredCompleted": number,
     "subtasks": [
       {
         "title": string,
         "completed": boolean
       },
-			...      
+   ...      
     ]
   },
-	...
+ ...
 ]
 ```
 
@@ -47,7 +47,6 @@ __Структура json-файла:__
 | subtask.title    | string   | Наименование подзадачи |
 | subtask.completed    | boolean   | Выполнена ли задача? |
 
-
 __Пример json-файла__
 
 ```
@@ -55,7 +54,7 @@ __Пример json-файла__
   {
     "id": 1,
     "title": "Изучить JavaScript",
-		"requiredCompleted": 2,
+  "requiredCompleted": 2,
     "subtasks": [
       {
         "title": "Освоить основы синтаксиса",
@@ -154,7 +153,55 @@ docker compose up
 
 Данные примеры запускают контейнер на порту `3000` и считывают данные из текущей папки `./data`.
 
+## Запуск в кластере kubernetes
+
+Для запуска в кластере kubernetes необходимо выполнить следующие действия:
+
+1. Скачать папку [`kubernetes`](kubernetes/).
+
+2. Получить oauth-метку от Yandex.Cloud. Сделать это можно по ссылке [https://oauth.yandex.ru/verification_code](https://oauth.yandex.ru/verification_code)
+
+3. Создать секрет в кластере для доступа к репозиторию `cr.yandex`:
+
+	```bash
+	kubectl create secret docker-registry cr.yandex --docker-server=https://cr.yandex/ --docker-username=oauth --docker-password=<your-oauth-code> --docker-email=<your-email@yandex.ru>
+	```
+
+4. Создать configMap с данными для приложения. В файле [configmap.yaml](kubernetes/configmap.yaml#L6) необходимо указать требуемые данные для файла `data.json`
+
+	```bash
+	kubectl apply -f kubernetes/configmap.yaml
+	```
+
+5. Создать deployment с указанием требуемого количества реплик приложения. 
+
+	Так же в файле [deployment.yaml](kubernetes/deployment.yaml#L22) вместо `__IMAGE__` указать одно из значений:
+		
+	- `makevg/devops-html`
+	- `cr.yandex/crpg9ie34hq65l49usj2/devops-html`
+
+	После этого выполнить команду:
+
+	```bash
+	kubectl apply -f kubernetes/deployment.yaml
+	```
+
+6. Создать сервис с указанием внешнего порта, по которому будет доступно приложение. Также в файле [service.yaml](kubernetes/service.yaml#L6) можно поменять тип сервиса с `NodePort` на `LoadBalancer`, если не используется внешний балансировщик:
+
+	```bash
+	kubectl apply -f kubernetes/service.yaml
+	```
+
+7. Проверить корректность запуска всех сущностей кластера:
+
+	```bash
+	kubectl get all
+	```
+
+В приведённых файлах приложение запускается в пространстве имен `default` на порту `3000` и доступно с внешнего IP-адреса кластера (используется внешний балансировщик).
+
+
+
 # Где используется
 
 Сама работа [https://github.com/mea2k/devops-diplom](https://github.com/mea2k/devops-diplom)
-
