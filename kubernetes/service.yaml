@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: nginx-app
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: nginx-app
   ports:
     - name: http
       protocol: TCP
-      port: 3000      # Внутренний порт сервиса
       targetPort: 80  # Порт контейнера Nginx
+      nodePort: 31300 # Порт узла
+      port: 3000      # Внешний порт сервиса
